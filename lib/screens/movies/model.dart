@@ -35,7 +35,7 @@ class MovieModel {
     originalTitle = json['original_title'];
     overview = json['overview'];
     popularity = double.parse(json['popularity'].toString());
-    posterPath = json['poster_path']==null ? "https://cdn-icons-png.flaticon.com/128/7044/7044046.png" : "http://image.tmdb.org/t/p/original${json['poster_path']}";
+    posterPath = json['poster_path'];
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];

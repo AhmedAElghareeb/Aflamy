@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:film_app/screens/films/model.dart';
+import 'package:film_app/screens/movies/model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'states.dart';
 
 
-class FilmsCubit extends Cubit<FilmsStates>
+class MoviesCubit extends Cubit<MoviesStates>
 {
-  FilmsCubit():super(FilmsStates());
+  MoviesCubit():super(MoviesStates());
 
   final List<MovieModel> _list = [];
 
@@ -16,9 +16,9 @@ class FilmsCubit extends Cubit<FilmsStates>
   void getMovies({bool fromPagination = false}) async {
     if(fromPagination)
     {
-      emit(GetFilmsFromPaginationLoadingState());
+      emit(GetMoviesFromPaginationLoadingState());
     } else {
-      emit(GetFilmsLoadingState());
+      emit(GetMoviesLoadingState());
     }
     try{
       var response = await Dio().get("https://api.themoviedb.org/3/discover/movie?api_key=2001486a0f63e9e4ef9c4da157ef37cd&page=$pageNumber");
@@ -29,14 +29,14 @@ class FilmsCubit extends Cubit<FilmsStates>
         _list.addAll(model.list);
       }
 
-      emit(GetFilmsSuccessState(list: _list));
+      emit(GetMoviesSuccessState(list: _list));
     } on DioException catch(ex)
     {
       if(fromPagination)
       {
-        emit(GetFilmsFromPaginationFailState(msg: ex.toString()));
+        emit(GetMoviesFromPaginationFailState(msg: ex.response!.data["errors"][0]));
       } else {
-        emit(GetFilmsFailedState(msg: ex.toString()));
+        emit(GetMoviesFailedState(msg: ex.toString()));
       }
     }
   }
