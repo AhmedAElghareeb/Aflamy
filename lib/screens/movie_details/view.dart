@@ -14,6 +14,7 @@ class MovieDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: Text("Movie Details ${id}"),
         centerTitle: true,
+        elevation: 0.0,
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: BlocBuilder(
@@ -31,8 +32,8 @@ class MovieDetailsView extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(25.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).primaryColor.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(15),
+                  color: Theme.of(context).primaryColor.withOpacity(0.08),
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Column(
@@ -94,7 +95,7 @@ class MovieDetailsView extends StatelessWidget {
           );
         } else
         {
-          return const Center(child: CircularProgressIndicator(),);
+          return const Center(child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
         }
       },),
     );

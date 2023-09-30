@@ -1,7 +1,7 @@
 part of 'view.dart';
 class _Item extends StatelessWidget {
   final MovieModel model;
-  const _Item({super.key, required this.model});
+  const _Item({required this.model});
 
   @override
   Widget build(BuildContext context) {

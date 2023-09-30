@@ -3,8 +3,8 @@ import 'package:film_app/screens/movies/cubit.dart';
 import 'package:film_app/screens/movies/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 part 'item.dart';
+
 class MoviesView extends StatelessWidget {
   const MoviesView({super.key});
 
@@ -16,6 +16,7 @@ class MoviesView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
         centerTitle: true,
+        elevation: 0.0,
         title: const Text("Movies"),
       ),
       body: BlocBuilder(
@@ -24,7 +25,7 @@ class MoviesView extends StatelessWidget {
         builder: (context, state) {
           if(state is GetMoviesLoadingState)
           {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
           } else if (state is GetMoviesFailedState)
           {
             return Center(child: Text(state.msg),);
@@ -54,14 +55,14 @@ class MoviesView extends StatelessWidget {
     ),
       bottomNavigationBar: SafeArea(
         child: SizedBox(
-          height: 50.0,
+          height: 45,
           child: BlocBuilder<MoviesCubit, MoviesStates>(
             buildWhen: (previous, current) => current is GetMoviesFromPaginationLoadingState || current is GetMoviesSuccessState || current is GetMoviesFromPaginationFailState,
             builder: (context, state) {
             if(state is GetMoviesFromPaginationLoadingState)
             {
               return const Center(
-                child: CircularProgressIndicator(color: Colors.green),);
+                child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
             } else if(state is GetMoviesFromPaginationFailState)
             {
               return Center(
