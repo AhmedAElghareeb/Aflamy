@@ -11,11 +11,12 @@ class MovieDetailsView extends StatelessWidget {
     MovieDetailsCubit cubit = BlocProvider.of(context);
     cubit.getData(id);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Movie Details ${id}"),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.white24,
       ),
       body: BlocBuilder(
         bloc: cubit,
@@ -95,7 +96,7 @@ class MovieDetailsView extends StatelessWidget {
           );
         } else
         {
-          return const Center(child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
+          return const Center(child: CircularProgressIndicator(color: Colors.black),);
         }
       },),
     );

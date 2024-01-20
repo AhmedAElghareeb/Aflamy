@@ -14,7 +14,7 @@ class MoviesView extends StatelessWidget {
     cubit.getMovies();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.white24,
         centerTitle: true,
         elevation: 0.0,
         title: const Text("Movies"),
@@ -25,7 +25,7 @@ class MoviesView extends StatelessWidget {
         builder: (context, state) {
           if(state is GetMoviesLoadingState)
           {
-            return const Center(child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
+            return const Center(child: CircularProgressIndicator(color: Colors.black),);
           } else if (state is GetMoviesFailedState)
           {
             return Center(child: Text(state.msg),);
@@ -62,7 +62,7 @@ class MoviesView extends StatelessWidget {
             if(state is GetMoviesFromPaginationLoadingState)
             {
               return const Center(
-                child: CircularProgressIndicator(color: Colors.lightBlueAccent),);
+                child: CircularProgressIndicator(color: Colors.black),);
             } else if(state is GetMoviesFromPaginationFailState)
             {
               return Center(

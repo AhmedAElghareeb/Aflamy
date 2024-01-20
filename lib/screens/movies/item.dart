@@ -1,4 +1,5 @@
 part of 'view.dart';
+
 class _Item extends StatelessWidget {
   final MovieModel model;
   const _Item({required this.model});
@@ -36,7 +37,7 @@ class _Item extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.star, color: Colors.green,),
+                      const Icon(Icons.star, color: Colors.yellow,),
                       const SizedBox(width: 4,),
                       Text(model.voteAverage.toString(), style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.green,),)
                     ],

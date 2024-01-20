@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.lightBlueAccent,
-      statusBarIconBrightness: Brightness.light,
+      statusBarColor: Colors.white24,
+      statusBarIconBrightness: Brightness.dark,
     ),
   );
   runApp(const MyApp());
