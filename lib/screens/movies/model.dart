@@ -4,7 +4,7 @@ class FilmModel {
 
   FilmModel.fromJson(Map<String, dynamic> json){
     page = json['page'];
-    list = List.from(json['results']).map((e)=>MovieModel.fromJson(e)).toList();
+    list = List.from(json['results'] ?? []).map((e)=>MovieModel.fromJson(e)).toList();
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
@@ -27,19 +27,19 @@ class MovieModel {
   late final int voteCount;
 
   MovieModel.fromJson(Map<String, dynamic> json){
-    adult = json['adult'];
+    adult = json['adult'] ?? false;
     image = json['backdrop_path'] == null ? "https://cdn-icons-png.flaticon.com/128/7044/7044046.png" : "http://image.tmdb.org/t/p/original${json['backdrop_path']}";
     genreIds = List.castFrom<dynamic, int>(json['genre_ids']);
-    id = json['id'];
-    originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
-    overview = json['overview'];
+    id = json['id'] ?? 0;
+    originalLanguage = json['original_language'] ?? "";
+    originalTitle = json['original_title'] ?? "";
+    overview = json['overview'] ?? "";
     popularity = double.parse(json['popularity'].toString());
-    posterPath = json['poster_path'];
-    releaseDate = json['release_date'];
-    title = json['title'];
-    video = json['video'];
+    posterPath = json['poster_path'] ?? "";
+    releaseDate = json['release_date'] ?? "";
+    title = json['title'] ?? "";
+    video = json['video'] ?? false;
     voteAverage = double.parse(json['vote_average'].toString());
-    voteCount = json['vote_count'];
+    voteCount = json['vote_count'] ?? 0;
   }
 }

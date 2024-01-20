@@ -28,11 +28,11 @@ class MovieDetails {
   late final num voteCount;
 
   MovieDetails.fromJson(Map<String, dynamic> json){
-    adult = json['adult'];
+    adult = json['adult'] ?? false;
     backdropPath = "http://image.tmdb.org/t/p/original${json['backdrop_path']}";
     belongsToCollection = json['belongs_to_collection'] == null? null: BelongsToCollection.fromJson(json['belongs_to_collection']);
-    budget = json['budget']??0;
-    genres = List.from(json['genres']).map((e)=>Genres.fromJson(e)).toList();
+    budget = json['budget'] ?? 0;
+    genres = List.from(json['genres'] ?? []).map((e)=>Genres.fromJson(e)).toList();
     homepage = json['homepage']??"";
     id = json['id']??0;
     imdbId = json['imdb_id']??"";
